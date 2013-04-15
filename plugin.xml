@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<e107Plugin name="Owe Me!" lan="LAN_OWEME_NAME" version="1.0" date="2013-04-14" compatibility="2.0" installRequired="true" >
+	<author name="Tijn Kuyper" url="http://www.tijnkuyper.nl" />
+	<summary lan="LAN_OWEME_SUMM">Provides an overview of money that is owed to you. Ability to create entries, debtors, statuses.</summary>
+	<description lan="LAN_OWEME_DESC">Provides an overview of money that is owed to you. You can create entries and include date, amount, debtor and a description of the entry. Also, one is able to edit the existing debtors and statuses.</description>
+	<keywords>
+		<word>money</word>
+		<word>owe</word>
+	</keywords>
+	<category>misc</category>
+	<copyright>Copyright 2013 - Tijn Kuyper, Licensed under GPL (http://www.gnu.org/licenses/gpl.txt)</copyright>
+	<adminLinks>
+		<link url="admin_config.php" description="" icon="images/icon_32.png" iconSmall="images/icon_16.png" primary="true">LAN_CONFIGURE</link>
+	</adminLinks>
+</e107Plugin>
