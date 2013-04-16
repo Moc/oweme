@@ -14,7 +14,7 @@ CREATE TABLE `oweme_entries` (
   `e_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `e_datestamp` int(10) unsigned NOT NULL,
   `e_category` tinyint(3) unsigned NOT NULL,
-  `e_amount` varchar(255) NOT NULL,
+  `e_amount` decimal(13,2) NOT NULL,
   `e_description` varchar(255) NOT NULL,
   `e_debtor` varchar(200) NOT NULL,
   `e_status` tinyint(3) unsigned NOT NULL,

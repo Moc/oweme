@@ -8,8 +8,12 @@
 		<word>owe</word>
 	</keywords>
 	<category>misc</category>
-	<copyright>Copyright 2013 - Tijn Kuyper, Licensed under GPL (http://www.gnu.org/licenses/gpl.txt)</copyright>
 	<adminLinks>
 		<link url="admin_config.php" description="" icon="images/icon_32.png" iconSmall="images/icon_16.png" primary="true">LAN_CONFIGURE</link>
 	</adminLinks>
+	<siteLinks>
+		<link url="{e_PLUGIN}oweme/oweme.php" perm='everyone'>Owe Me!</link>		
+	</siteLinks>
+	<copyright>Copyright 2013 - Tijn Kuyper, Licensed under GPL (http://www.gnu.org/licenses/gpl.txt)</copyright>
+
 </e107Plugin>
