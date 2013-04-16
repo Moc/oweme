@@ -2,7 +2,9 @@
 
 Owe Me! is an e107 plugin that provides an overview of that what people owe you. You can create entries and include date, category, amount, description, debtor and the status of the entry.
 
-Also, one is able to add and edit categories, debtors and statuses from the admin area.
+Also, one is able to manage categories, debtors and statuses from the admin area.
+
+This plugin is coded using **bootstrap and jquery standards**. 
 
 
 ## Requirements ##
@@ -10,7 +12,7 @@ Also, one is able to add and edit categories, debtors and statuses from the admi
 * PHP 5.3+
 * Ability to read the wiki or search forums for answers ;)
 
-To be clear: e107 v1.x is not supported, nor is any PHP version prior to PHP 5.3!
+**To be clear**: e107 v1.x is not supported, nor is any PHP version prior to PHP 5.3! 
 
 ## Roadmap - planned features ##
 * *Email* functionality (initial entry, reminders) .
@@ -18,6 +20,7 @@ To be clear: e107 v1.x is not supported, nor is any PHP version prior to PHP 5.3
 * *Userclasses* integration (debtors).
 * Somehow *link categories-debtors-types*. 
 * *Icons* for categories, debtors, statuses.
+* *Status colors*
 
 
 ## How to get help? ##

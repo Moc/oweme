@@ -9,7 +9,7 @@
  */
 
 define("LAN_OWEME_NAME",  "Owe Me!");
-define("LAN_OWEME_DESC",  "Provides an overview of money that is owed to you. You can create entries and include date, amount, debtor and a description of the entry. Also, one is able to edit the existing debtors and statuses.");
-define("LAN_OWEME_SUMM",  "Provides an overview of money that is owed to you. Ability to create entries, debtors, statuses.");
+define("LAN_OWEME_DESC",  "Provides an overview of that what people owe you. You can create entries and include date, category, amount, description, debtor and the status of the entry. Also, one is able to manage categories, debtors and statuses from the admin area.");
+define("LAN_OWEME_SUMM",  "Provides an overview of that what people owe you. Ability to manage categories, debtors and statuses.");
 
 ?>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <e107Plugin name="Owe Me!" lan="LAN_OWEME_NAME" version="1.0" date="2013-04-14" compatibility="2.0" installRequired="true" >
 	<author name="Tijn Kuyper" url="http://www.tijnkuyper.nl" />
-	<summary lan="LAN_OWEME_SUMM">Provides an overview of money that is owed to you. Ability to create entries, debtors, statuses.</summary>
-	<description lan="LAN_OWEME_DESC">Provides an overview of money that is owed to you. You can create entries and include date, amount, debtor and a description of the entry. Also, one is able to edit the existing debtors and statuses.</description>
+	<summary lan="LAN_OWEME_SUMM">Provides an overview of that what people owe you. Ability to manage categories, debtors and statuses.</summary>
+	<description lan="LAN_OWEME_DESC">Provides an overview of that what people owe you. You can create entries and include date, category, amount, description, debtor and the status of the entry. Also, one is able to manage categories, debtors and statuses from the admin area.</description>
 	<keywords>
 		<word>money</word>
 		<word>owe</word>
@@ -14,6 +14,10 @@
 	<siteLinks>
 		<link url="{e_PLUGIN}oweme/oweme.php" perm='everyone'>Owe Me!</link>		
 	</siteLinks>
-	<copyright>Copyright 2013 - Tijn Kuyper, Licensed under GPL (http://www.gnu.org/licenses/gpl.txt)</copyright>
-
+	<pluginPrefs>
+		<pref name="oweme_currency">1</pref>
+		<pref name="oweme_epp">15</pref>
+		<pref name="oweme_scolor">1</pref>
+	</pluginPrefs>
+	<copyright>Copyright 2013-2014 Tijn Kuyper. Licensed under GPL (http://www.gnu.org/licenses/gpl.txt)</copyright>
 </e107Plugin>

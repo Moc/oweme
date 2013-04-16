@@ -9,16 +9,30 @@
  */
 
 require_once("../../class2.php");
+
+// Make this page unaccessible when plugin is not installed. 
 if (!e107::isInstalled('oweme'))
 {
 	header('location:'.e_BASE.'index.php');
 	exit;
 }
 
+// Exit when running PHP < 5.3 to motivate people to move to 5.3+. Oh right, and to be sure that I can use the latest PHP functions! :)
+$php_version = phpversion();
+if(version_compare($php_version, 5.3, "<"))
+{
+	require_once(HEADERF);
+	$text = 'A minimum version of PHP 5.3 is required';
+	e107::getRender()->tablerender("Owe Me! - Error", $text); 
+	require_once(FOOTERF);
+	exit;
+}
 include_lan(e_PLUGIN."oweme/languages/".e_LANGUAGE."/".e_LANGUAGE."_front.php");
 
 require_once(HEADERF);
 
+
+// Ok, we're good to go.
 class oweme
 {
 
@@ -48,50 +62,64 @@ class oweme
 		return $status;
 	}
 	
+	// Here's the main table, the above functions are there to match the category/debtor/status id to the c/d/s name.
 	function showOverview()
 	{
 		$sql = e107::getDb();
 
-		$text = '
-		<table class="table table-bordered">
- 		<thead>
- 			<tr>
-	          	<th>'.LAN_OWEME_ID.'</th>
-	          	<th>'.LAN_OWEME_DATE.'</th>
-	          	<th>'.LAN_OWEME_CATEGORY.'</th>
-	          	<th>'.LAN_OWEME_AMOUNT.'</th>
-	          	<th>'.LAN_OWEME_DESCRIPTION.'</th>
-	          	<th>'.LAN_OWEME_DEBTOR.'</th>
-	          	<th>'.LAN_OWEME_STATUS.'</th>
-	        </tr>
-	     </thead>
-         	<tbody>';
-
 		$entries = $sql->retrieve('oweme_entries', 'e_id, e_datestamp, e_category, e_amount, e_description, e_debtor, e_status', '', TRUE); 
-		foreach ($entries as $entry) 
+
+		// Check if there are entries in the database, if not, show info message.
+		if($entries)
 		{
-		    $text .= '
-	        <tr>
-	        	<td>'.$entry["e_id"].'</td>
-	        	<td>'.e107::getDate()->convert($entry["e_datestamp"]).'</td>
-	        	<td>'.$this->getCategoryname($entry["e_category"]).'</td>
-	        	<td>&euro;'.$entry["e_amount"].'</td>
-	        	<td>'.$entry["e_description"].'</td>
-	        	<td>'.$this->getDebtorname($entry["e_debtor"]).'</td>
-	        	<td>'.$this->getStatusname($entry["e_status"]).'</td>
-	    	</tr>';
+			$text = '
+			<table class="table table-bordered table-hover">
+	 		<thead>
+	 			<tr>
+		          	<th>'.LAN_OWEME_ID.'</th>
+		          	<th>'.LAN_OWEME_DATE.'</th>
+		          	<th>'.LAN_OWEME_CATEGORY.'</th>
+		          	<th>'.LAN_OWEME_AMOUNT.'</th>
+		          	<th>'.LAN_OWEME_DESCRIPTION.'</th>
+		          	<th>'.LAN_OWEME_DEBTOR.'</th>
+		          	<th>'.LAN_OWEME_STATUS.'</th>
+		        </tr>
+		     </thead>
+	         	<tbody>';
+
+				foreach ($entries as $entry) 
+				{
+				    $text .= '
+			        <tr>
+			        	<td>'.$entry["e_id"].'</td>
+			        	<td>'.date("F j, Y", $entry["e_datestamp"]).'</td>
+			        	<td>'.$this->getCategoryname($entry["e_category"]).'</td>
+			        	<td>&euro;'.$entry["e_amount"].'</td>
+			        	<td>'.$entry["e_description"].'</td>
+			        	<td>'.$this->getDebtorname($entry["e_debtor"]).'</td>
+			        	<td>'.$this->getStatusname($entry["e_status"]).'</td>
+			    	</tr>';
+				}
+		        
+			        $text .= '
+		        </tbody>
+		    </table>
+			';
 		}
-        
-        $text .= '
-	        </tbody>
-	    </table>
-		';
-		
+		else
+		{
+			$text = "
+			<div class='alert alert-info'>
+			 No entries yet.
+			</div>.
+			";
+		}
+
+		// Let's render it so we can show it to the visitors. 
 		e107::getRender()->tablerender("Owe Me!", $text);
 	}
 	
 }
-
 
 new oweme;
 
