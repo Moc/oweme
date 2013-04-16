@@ -17,7 +17,8 @@ if (!e107::isInstalled('oweme'))
 	exit;
 }
 
-// Exit when running PHP < 5.3 to motivate people to move to 5.3+. Oh right, and to be sure that I can use the latest PHP functions! :)
+// Exit when running PHP < 5.3 to motivate people to move to 5.3+. 
+// Oh right, and to be sure that I can use the latest PHP functions! :)
 $php_version = phpversion();
 if(version_compare($php_version, 5.3, "<"))
 {
@@ -27,6 +28,7 @@ if(version_compare($php_version, 5.3, "<"))
 	require_once(FOOTERF);
 	exit;
 }
+
 include_lan(e_PLUGIN."oweme/languages/".e_LANGUAGE."/".e_LANGUAGE."_front.php");
 
 require_once(HEADERF);
@@ -55,11 +57,15 @@ class oweme
 		return $debtor;
 	}
 
-	function getStatusname($s_id)
+	function getStatus($s_id)
 	{
 		$sql = e107::getDb();
-		$status = $sql->retrieve('oweme_statuses', 's_name', 's_id = '.$s_id.'');
-		return $status;
+		$status = $sql->retrieve('oweme_statuses', 's_name, s_label', 's_id = '.$s_id.'');
+		
+		$statusname = $status["s_name"];
+		$statuslabel = $status["s_label"];
+
+		return array($statuslabel, $statusname);
 	}
 	
 	// Here's the main table, the above functions are there to match the category/debtor/status id to the c/d/s name.
@@ -89,15 +95,18 @@ class oweme
 
 				foreach ($entries as $entry) 
 				{
+					// Get the values from the getStatus(), and turn them into variables. 
+					list($statuslabel, $statusname) = $this->getStatus($entry["e_status"]);
+
 				    $text .= '
 			        <tr>
 			        	<td>'.$entry["e_id"].'</td>
-			        	<td>'.date("F j, Y", $entry["e_datestamp"]).'</td>
+			        	<td>'.e107::getDate()->convert_date($entry["e_datestamp"], "%d %B, %y").'</td>
 			        	<td>'.$this->getCategoryname($entry["e_category"]).'</td>
 			        	<td>&euro;'.$entry["e_amount"].'</td>
 			        	<td>'.$entry["e_description"].'</td>
 			        	<td>'.$this->getDebtorname($entry["e_debtor"]).'</td>
-			        	<td>'.$this->getStatusname($entry["e_status"]).'</td>
+			        	<td><span class="label '.$statuslabel.'">'.$statusname.'</span></td>
 			    	</tr>';
 				}
 		        

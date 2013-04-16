@@ -10,5 +10,6 @@
 
 define("LAN_OWEME_AMOUNT",  "Amount");
 define("LAN_OWEME_DEBTOR",  "Debtor");
+define("LAN_OWEME_LABEL",  	"Label");
 
 ?>

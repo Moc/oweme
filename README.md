@@ -16,11 +16,11 @@ This plugin is coded using **bootstrap and jquery standards**.
 
 ## Roadmap - planned features ##
 * *Email* functionality (initial entry, reminders) .
-* Different *types* of items that are owed (other than 'money').
+* Different *types* that are owed (other than 'money').
 * *Userclasses* integration (debtors).
 * Somehow *link categories-debtors-types*. 
-* *Icons* for categories, debtors, statuses.
-* *Status colors*
+
+
 
 
 ## How to get help? ##

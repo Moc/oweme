@@ -57,9 +57,9 @@ class oweme_setup
 
 		// Entries
 		$query_statuses = "
-		INSERT INTO `#oweme_statuses` (`s_id`, `s_name`, `s_icon`) VALUES
-			(1, 'Open', ''),
-			(2, 'Closed', '');
+		INSERT INTO `#oweme_statuses` (`s_id`, `s_name`, `s_label`) VALUES
+			(1, 'Open', 'label-warning'),
+			(2, 'Closed', 'label-success');
 		";
 		
 		$status = ($sql->gen($query_statuses)) ? E_MESSAGE_SUCCESS : E_MESSAGE_ERROR;

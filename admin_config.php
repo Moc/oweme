@@ -88,7 +88,7 @@ class oweme_categories_ui extends e_admin_ui
 	protected $fields 		= array (  
 		'checkboxes' =>   array ( 'title' => '', 'type' => null, 'data' => null, 'width' => '5%', 'thclass' => 'center', 'forced' => '1', 'class' => 'center', 'toggle' => 'e-multiselect',  ),
 	  	'c_id' =>   array ( 'title' => 'LAN_ID', 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-	  	'c_name' =>   array ( 'title' => 'LAN_NAME', 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'filter' => true, 'validate' => true, 'help' => 'Name of the category', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+	  	'c_name' =>   array ( 'title' => 'LAN_NAME', 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'filter' => true, 'validate' => true, 'help' => 'Name of the category', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
 	  	'options' =>   array ( 'title' => 'Options', 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
 	);		
 	
@@ -115,7 +115,7 @@ class oweme_debtors_ui extends e_admin_ui
 	protected $fields 		= array (  
 		'checkboxes' 		=>   array ( 'title' => '', 'type' => null, 'data' => null, 'width' => '5%', 'thclass' => 'center', 'forced' => '1', 'class' => 'center', 'toggle' => 'e-multiselect',  ),
 	  	'd_id' 				=>   array ( 'title' => 'LAN_ID', 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-	  	'd_name' 			=>   array ( 'title' => 'LAN_NAME', 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'filter' => true, 'validate' => true, 'help' => 'Name of the person owing you.', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+	  	'd_name' 			=>   array ( 'title' => 'LAN_NAME', 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'filter' => true, 'validate' => true, 'help' => 'Name of the person owing you.', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
 	  	'options' =>   array ( 'title' => 'Options', 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
 	);		
 	
@@ -140,15 +140,15 @@ class oweme_entries_ui extends e_admin_ui
 	protected $perPage 			= 10; 
 		
 	protected $fields 		= array (  
-		'checkboxes'					=>   array ( 'title' => '', 'type' => null, 'data' => null, 'width' => '5%', 'thclass' => 'center', 'forced' => '1', 'class' => 'center', 'toggle' => 'e-multiselect',  ),
+		'checkboxes'			=>   array ( 'title' => '', 'type' => null, 'data' => null, 'width' => '5%', 'thclass' => 'center', 'forced' => '1', 'class' => 'center', 'toggle' => 'e-multiselect',  ),
 
-		'e_id' =>   array ( 'title' => 'LAN_ID', 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+		'e_id' 	=>   array ( 'title' => 'LAN_ID', 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
 	  	'e_datestamp' =>   array ( 'title' => 'LAN_DATESTAMP', 'type' => 'datestamp', 'data' => 'int', 'width' => 'auto', 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-	  	'e_category' =>   array ( 'title' => 'LAN_CATEGORY', 'type' => 'dropdown', 'data' => 'int', 'width' => 'auto', 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-	 	'e_amount' =>   array ( 'title' => 'LAN_OWEME_AMOUNT', 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
-	  	'e_description' =>   array ( 'title' => 'LAN_DESCRIPTION', 'type' => 'text', 'data' => 'str', 'width' => '40%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-	  	'e_debtor' =>   array ( 'title' => 'LAN_OWEME_DEBTOR', 'type' => 'dropdown', 'data' => 'str', 'width' => 'auto', 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
-	  	'e_status' =>   array ( 'title' => 'LAN_STATUS', 'type' => 'dropdown', 'data' => 'int', 'width' => 'auto', 'filter' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
+	  	'e_category' =>   array ( 'title' => 'LAN_CATEGORY', 'type' => 'dropdown', 'data' => 'int', 'width' => 'auto', 'inline' => true, 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+	 	'e_amount' =>   array ( 'title' => 'LAN_OWEME_AMOUNT', 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
+	  	'e_description' =>   array ( 'title' => 'LAN_DESCRIPTION', 'type' => 'textarea', 'data' => 'str', 'width' => '40%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+	  	'e_debtor' =>   array ( 'title' => 'LAN_OWEME_DEBTOR', 'type' => 'dropdown', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
+	  	'e_status' =>   array ( 'title' => 'LAN_STATUS', 'type' => 'dropdown', 'data' => 'int', 'width' => 'auto', 'inline' => true, 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
 	  	'options' =>   array ( 'title' => 'Options', 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
 	);		
 	
@@ -221,20 +221,49 @@ class oweme_statuses_ui extends e_admin_ui
 		protected $fields 		= array (  
 			'checkboxes' =>   array ( 'title' => '', 'type' => null, 'data' => null, 'width' => '5%', 'thclass' => 'center', 'forced' => '1', 'class' => 'center', 'toggle' => 'e-multiselect',  ),
 			's_id' =>   array ( 'title' => 'LAN_ID', 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-			's_name' =>   array ( 'title' => 'LAN_NAME', 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'validate' => true, 'help' => 'Name of the status', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-			's_icon' =>   array ( 'title' => 'LAN_ICON', 'type' => 'icon', 'data' => 'str', 'width' => 'auto', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+			's_name' =>   array ( 'title' => 'LAN_NAME', 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => 'Name of the status', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+			's_label' =>   array ( 'title' => 'LAN_OWEME_LABEL', 'type' => 'method', 'data' => 'str', 'width' => 'auto', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
 			'options' =>   array ( 'title' => 'Options', 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
 		);		
 		
-		protected $fieldpref = array('s_id', 's_name');		
+		protected $fieldpref = array('s_id', 's_label');		
 }
 				
 
 
 class oweme_statuses_form_ui extends e_admin_form_ui
 {
+	// Custom Method/Function 
+	function s_label($curVal,$mode)
+	{
+		$frm = e107::getForm();		
+		$sql = e107::getDb();
+		
+		switch($mode)
+		{
+			case 'read': // List Page
+				return "<span class='label ".$curVal."'>".$curVal."</span>";
+			break;
+			
+			case 'write': // Edit Page
+				return $frm->radio('s_label', array(
+					"label-default" 	=> "<span class='label label-default'>label-default</span>", 
+					"label-success" 	=> "<span class='label label-success'>label-success</span>", 
+					"label-warning" 	=> "<span class='label label-warning'>label-warning</span>", 
+					"label-important" 	=> "<span class='label label-important'>label-important</span>",
+					"label-info" 		=> "<span class='label label-info'>label-info</span>",
+					"label-inverse" 	=> "<span class='label label-inverse'>label-inverse</span>", ), 
+				$curVal, array('sep' => '<br />'));
+			break;
+			
+			case 'filter':
+			case 'batch':
+				return  $array; 
+			break;
+		}
+	}
 
-}		
+}	
 		
 		
 new oweme_admin();

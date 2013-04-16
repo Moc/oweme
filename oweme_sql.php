@@ -23,7 +23,7 @@ CREATE TABLE `oweme_entries` (
 
 CREATE TABLE `oweme_statuses` (
   `s_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
-  `s_name` varchar(200) NOT NULL,
-  `s_icon` varchar(250) NOT NULL,
+  `s_name` varchar(250) NOT NULL,
+  `s_label` varchar(200) NOT NULL,
   PRIMARY KEY (`s_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
