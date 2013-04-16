@@ -8,14 +8,16 @@ Also, one is able to add and edit categories, debtors and statuses from the admi
 ## Requirements ##
 * e107 v2.x+
 * PHP 5.3+
-* Ability to read the wiki ;)
+* Ability to read the wiki or search forums for answers ;)
 
+To be clear: e107 v1.x is not supported, nor is any PHP version prior to PHP 5.3!
 
 ## Roadmap - planned features ##
-* *Email* functionality (initial entry, reminders) 
-* Different *types* of items that are owed (other than 'money')
-* *Userclasses* integration (debtors)
+* *Email* functionality (initial entry, reminders) .
+* Different *types* of items that are owed (other than 'money').
+* *Userclasses* integration (debtors).
 * Somehow *link categories-debtors-types*. 
+* *Icons* for categories, debtors, statuses.
 
 
 ## How to get help? ##
@@ -28,8 +30,5 @@ Also, one is able to add and edit categories, debtors and statuses from the admi
 * Use the [issue tracker](https://github.com/Moc/oweme/issues)
 
 
-## Anything else ##
-* Seriously? Well there is something going on that does not fall in the above info, simply drop me a PM on e107.org here 
-
-
-
+## Anything else? ##
+* Seriously? Well, if there is something going on that does not match with anything mentioned above, simply [drop me a PM on e107.org](http://e107.org/e107_plugins/pm/pm.php?send.44563).
