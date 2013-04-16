@@ -148,7 +148,7 @@ class oweme_entries_ui extends e_admin_ui
 	 	'e_amount' =>   array ( 'title' => 'LAN_OWEME_AMOUNT', 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
 	  	'e_description' =>   array ( 'title' => 'LAN_DESCRIPTION', 'type' => 'text', 'data' => 'str', 'width' => '40%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
 	  	'e_debtor' =>   array ( 'title' => 'LAN_OWEME_DEBTOR', 'type' => 'dropdown', 'data' => 'str', 'width' => 'auto', 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
-	  	'e_status' =>   array ( 'title' => 'LAN_STATUS', 'type' => 'dropdown', 'data' => 'int', 'width' => 'auto', 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
+	  	'e_status' =>   array ( 'title' => 'LAN_STATUS', 'type' => 'dropdown', 'data' => 'int', 'width' => 'auto', 'filter' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
 	  	'options' =>   array ( 'title' => 'Options', 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
 	);		
 	
