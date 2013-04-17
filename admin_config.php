@@ -92,7 +92,7 @@ class oweme_categories_ui extends e_admin_ui
 	  	'options' =>   array ( 'title' => 'Options', 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
 	);		
 	
-	protected $fieldpref = array('c_id, c_name');		
+	protected $fieldpref = array('c_id', 'c_name');		
 }
 				
 
@@ -119,7 +119,7 @@ class oweme_debtors_ui extends e_admin_ui
 	  	'options' =>   array ( 'title' => 'Options', 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
 	);		
 	
-	protected $fieldpref = array('d_id, d_name');	
+	protected $fieldpref = array('d_id', 'd_name');	
 }
 				
 
@@ -144,34 +144,35 @@ class oweme_entries_ui extends e_admin_ui
 
 		'e_id' 	=>   array ( 'title' => 'LAN_ID', 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
 	  	'e_datestamp' =>   array ( 'title' => 'LAN_DATESTAMP', 'type' => 'datestamp', 'data' => 'int', 'width' => 'auto', 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-	  	'e_category' =>   array ( 'title' => 'LAN_CATEGORY', 'type' => 'dropdown', 'data' => 'int', 'width' => 'auto', 'inline' => true, 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+	  	'e_debtor' =>   array ( 'title' => 'LAN_OWEME_DEBTOR', 'type' => 'dropdown', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),	  	
 	 	'e_amount' =>   array ( 'title' => 'LAN_OWEME_AMOUNT', 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
 	  	'e_description' =>   array ( 'title' => 'LAN_DESCRIPTION', 'type' => 'textarea', 'data' => 'str', 'width' => '40%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-	  	'e_debtor' =>   array ( 'title' => 'LAN_OWEME_DEBTOR', 'type' => 'dropdown', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
+	  	'e_category' =>   array ( 'title' => 'LAN_CATEGORY', 'type' => 'dropdown', 'data' => 'int', 'width' => 'auto', 'inline' => true, 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+	  	
 	  	'e_status' =>   array ( 'title' => 'LAN_STATUS', 'type' => 'dropdown', 'data' => 'int', 'width' => 'auto', 'inline' => true, 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
 	  	'options' =>   array ( 'title' => 'Options', 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
 	);		
 	
-	protected $fieldpref = array('e_id', 'e_datestamp', 'e_category', 'e_amount', 'e_description', 'e_debtor', 'e_status');
+	protected $fieldpref = array('e_id', 'e_datestamp', 'e_debtor', 'e_amount', 'e_description', 'e_category', 'e_status');
 		
 
 	public function init()
 	{
 		$sql = e107::getDb();
 
-		// statuses
-		$this->status[0] = "(No status)";
-		if($sql->select('oweme_statuses'))
+		// debtors
+		$this->debtor[0] = "(No debtor)";
+		if($sql->select('oweme_debtors'))
 		{
 			while ($row = $sql->fetch())
 			{
-				$this->status[$row['s_id']] = $row['s_name'];
+				$this->debtor[$row['d_id']] = $row['d_name'];
 			}
 		}
-	
-		$this->fields['e_status']['writeParms'] = $this->status;
+		
+		$this->fields['e_debtor']['writeParms'] = $this->debtor;
 
-
+		
 		// categories
 		$this->category[0] = "(No category)";
 		if($sql->select('oweme_categories'))
@@ -185,17 +186,17 @@ class oweme_entries_ui extends e_admin_ui
 		$this->fields['e_category']['writeParms'] = $this->category;
 
 
-		// debtors
-		$this->debtor[0] = "(No debtor)";
-		if($sql->select('oweme_debtors'))
+		// statuses
+		$this->status[0] = "(No status)";
+		if($sql->select('oweme_statuses'))
 		{
 			while ($row = $sql->fetch())
 			{
-				$this->debtor[$row['d_id']] = $row['d_name'];
+				$this->status[$row['s_id']] = $row['s_name'];
 			}
 		}
-		
-		$this->fields['e_debtor']['writeParms'] = $this->debtor;
+	
+		$this->fields['e_status']['writeParms'] = $this->status;
 	}
 
 }
