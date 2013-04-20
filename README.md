@@ -18,7 +18,8 @@ This plugin is coded using **bootstrap and jquery standards**.
 * *Email* functionality (initial entry, reminders) .
 * Different *types* that are owed (other than 'money').
 * *Userclasses* integration (debtors).
-* Somehow *link categories-debtors-types*. 
+* Somehow *link debtors-categories-types*. 
+* Using *tabs* create/manage (debtor, category, status)
 
 
 
@@ -35,3 +36,12 @@ This plugin is coded using **bootstrap and jquery standards**.
 
 ## Anything else? ##
 * Seriously? Well, if there is something going on that does not match with anything mentioned above, simply [drop me a PM on e107.org](http://e107.org/e107_plugins/pm/pm.php?send.44563).
+
+## Screenshots ##
+![ss1](https://raw.github.com/Moc/oweme/829782ef52b21d40c4588732b35f06c1ac9783ae/screenshots/oweme_admin_manage-entries.png)
+
+
+![ss2](https://raw.github.com/Moc/oweme/829782ef52b21d40c4588732b35f06c1ac9783ae/screenshots/oweme_admin_editentry.png)
+
+![ss3](https://raw.github.com/Moc/oweme/829782ef52b21d40c4588732b35f06c1ac9783ae/screenshots/oweme_frontend.png)
+
