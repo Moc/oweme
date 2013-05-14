@@ -29,12 +29,12 @@ if(version_compare($php_version, 5.3, "<"))
 	exit;
 }
 
-include_lan(e_PLUGIN."oweme/languages/".e_LANGUAGE."/".e_LANGUAGE."_front.php");
+e107::plugLan('oweme', e_LANGUAGE.'_front');
 
 require_once(HEADERF);
 
 
-// Ok, we're good to go.
+// Ok, all neccessary files are included, all checks have been passed: we are good to go.
 class oweme
 {
 
@@ -65,14 +65,14 @@ class oweme
 		$statusname = $status["s_name"];
 		$statuslabel = $status["s_label"];
 
-		return array($statuslabel, $statusname);
+		return array($statuslabel, $statusname); // return the values in an array
 	}
 	
 	// Here's the main table, the above functions are there to match the category/debtor/status id to the c/d/s name.
 	function showOverview()
 	{
 		$sql = e107::getDb();
-
+		// Query that checks the database for entries
 		$entries = $sql->retrieve('oweme_entries', 'e_id, e_datestamp, e_category, e_amount, e_description, e_debtor, e_status', '', TRUE); 
 
 		// Check if there are entries in the database, if not, show info message.
@@ -92,10 +92,10 @@ class oweme
 		        </tr>
 		     </thead>
 	         	<tbody>';
-
+	         	// Loop trough each entry
 				foreach ($entries as $entry) 
 				{
-					// Get the values from the getStatus(), and turn them into variables. 
+					// Turn the array that was returned by getStatus() into variables. 
 					list($statuslabel, $statusname) = $this->getStatus($entry["e_status"]);
 
 				    $text .= '
@@ -115,16 +115,15 @@ class oweme
 		    </table>
 			';
 		}
+		// No entries, display info message
 		else
 		{
 			$text = "
-			<div class='alert alert-info'>
-			 No entries yet.
-			</div>.
+			<div class='alert alert-info alert-block text-center'>".LAN_OWEME_001."</div>
 			";
 		}
 
-		// Let's render it so we can show it to the visitors. 
+		// Let's render and show it!
 		e107::getRender()->tablerender("Owe Me!", $text);
 	}
 	
@@ -134,5 +133,4 @@ new oweme;
 
 require_once(FOOTERF);
 exit;
-
 ?>

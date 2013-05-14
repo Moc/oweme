@@ -16,4 +16,6 @@ define("LAN_OWEME_DESCRIPTION", "Description");
 define("LAN_OWEME_DEBTOR", 		"Debtor");
 define("LAN_OWEME_STATUS", 		"Status");
 
+define("LAN_OWEME_001", "No entries yet.");
+
 ?>

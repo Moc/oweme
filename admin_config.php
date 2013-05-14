@@ -114,9 +114,9 @@ class oweme_debtors_ui extends e_admin_ui
 		
 	protected $fields 		= array (  
 		'checkboxes' 		=>   array ( 'title' => '', 'type' => null, 'data' => null, 'width' => '5%', 'thclass' => 'center', 'forced' => '1', 'class' => 'center', 'toggle' => 'e-multiselect',  ),
-	  	'd_id' 				=>   array ( 'title' => 'LAN_ID', 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-	  	'd_name' 			=>   array ( 'title' => 'LAN_NAME', 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'filter' => true, 'validate' => true, 'help' => 'Name of the person owing you.', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-	  	'options' =>   array ( 'title' => 'Options', 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
+	  	'd_id' 				=>   array ( 'title' => LAN_ID, 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+	  	'd_name' 			=>   array ( 'title' => LAN_NAME, 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'filter' => true, 'validate' => true, 'help' => 'Name of the person owing you.', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+	  	'options' =>   array ( 'title' => LAN_OPTIONS, 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
 	);		
 	
 	protected $fieldpref = array('d_id', 'd_name');	
@@ -161,7 +161,7 @@ class oweme_entries_ui extends e_admin_ui
 		$sql = e107::getDb();
 
 		// debtors
-		$this->debtor[0] = "(No debtor)";
+		$this->debtor[0] = LAN_OWEME_A_001;
 		if($sql->select('oweme_debtors'))
 		{
 			while ($row = $sql->fetch())
@@ -174,7 +174,7 @@ class oweme_entries_ui extends e_admin_ui
 
 		
 		// categories
-		$this->category[0] = "(No category)";
+		$this->category[0] = LAN_OWEME_A_002;
 		if($sql->select('oweme_categories'))
 		{
 			while ($row = $sql->fetch())
@@ -187,7 +187,7 @@ class oweme_entries_ui extends e_admin_ui
 
 
 		// statuses
-		$this->status[0] = "(No status)";
+		$this->status[0] = LAN_OWEME_A_003;
 		if($sql->select('oweme_statuses'))
 		{
 			while ($row = $sql->fetch())
