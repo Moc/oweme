@@ -18,10 +18,11 @@ This plugin is coded using e107 which includes **bootstrap and jquery standards*
 
 
 ## Roadmap - planned features ##
-* *Preferences/options* to set currency, email settings, columns hide/display, etc.
-* *Email* functionality (initial entry, reminders) .
-* Different *types* that are owed (other than 'money').
-* *Userclasses* integration (debtors).
+* *Preferences/options* to set currency, email settings, etc.
+* *Templating* for frontend customization
+* *Email* functionality (initial entry, reminders).
+* Different *types* of 'items' that are owed (other than 'money').
+* *Userclasses* integration (debtors, categories).
 * Somehow *link debtors-categories-types*. 
 * Using *tabs* create/manage (debtor, category, status)
 
