@@ -15,9 +15,8 @@
 		<link url="{e_PLUGIN}oweme/oweme.php" perm='everyone'>Owe Me!</link>		
 	</siteLinks>
 	<pluginPrefs>
-		<pref name="oweme_currency">1</pref>
-		<pref name="oweme_epp">15</pref>
-		<pref name="oweme_scolor">1</pref>
+		<pref name='currency'>EUR</pref>
+		<pref name='epp'>15</pref>
 	</pluginPrefs>
 	<copyright>Copyright 2013-2014 Tijn Kuyper. Licensed under GPL (http://www.gnu.org/licenses/gpl.txt)</copyright>
 </e107Plugin>
