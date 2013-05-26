@@ -64,7 +64,7 @@ class oweme_admin extends e_admin_dispatcher
 		'other2/list'		=> array('caption'=> "Manage statuses", 'perm' => 'P'),
 		'other2/create'		=> array('caption'=> "Create status", 'perm' => 'P'),
 
-		'main/prefs'		=> array('caption'=> LAN_PREFS, 'perm' => 'P'),
+		'main/prefs'		=> array('caption'=> "Preferences", 'perm' => 'P'),
 
 	);
 
@@ -75,6 +75,7 @@ class oweme_admin extends e_admin_dispatcher
 	protected $menuTitle = 'Owe Me!';
 }
 
+	//'main/prefs' 		=> array('caption'=> LAN_PREFS, 'perm' => 'P'),	
 
 
 
@@ -95,11 +96,7 @@ class oweme_categories_ui extends e_admin_ui
 	);		
 	
 	protected $fieldpref = array('c_id', 'c_name');		
-
-	protected $prefs = array(	
-		'currency'	=> array('title'=> 'Currency', 'type'=>'text', 'data' => 'string','help'=>'Help Text goes here'),
-		'epp'		=> array('title'=> 'Epp', 'type'=>'text', 'data' => 'string','help'=>'Help Text goes here'),
-	); 
+ 
 }
 				
 
@@ -161,7 +158,11 @@ class oweme_entries_ui extends e_admin_ui
 	);		
 	
 	protected $fieldpref = array('e_id', 'e_datestamp', 'e_debtor', 'e_amount', 'e_description', 'e_category', 'e_status');
-		
+	
+	protected $prefs = array(	
+		'currency'		=> array('title'=> 'Currency', 'type'=>'dropdown', 'data' => 'string','help'=>'Default currency.'),
+		'epp'		=> array('title'=> 'Epp', 'type'=>'dropdown', 'data' => 'string','help'=>'The number of entries per page.'),
+	);
 
 	public function init()
 	{
