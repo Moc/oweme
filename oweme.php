@@ -29,19 +29,15 @@ if(version_compare($php_version, 5.3, "<"))
 	exit;
 }
 
-// Load the LAN files (e_PLUGIN/oweme/languages/LANGUAGE/LANGUAGE_front.php)
+// Load the LAN files
 e107::lan('oweme', false, true);
 
 require_once(HEADERF);
 
 // Ok, all neccessary files are included, all checks have been passed: we are good to go.
+// Class that includes methods that are needed to show the main table.
 class oweme
 {
-	function __construct()
-	{
-		$this->showOverview();
-	}
-
 	function getCategoryname($c_id)
 	{
 		$sql = e107::getDb();
@@ -66,77 +62,71 @@ class oweme
 
 		return array($statuslabel, $statusname); // return the values in an array
 	}
-	
-	// Here's the main table, the above functions are there to match the category/debtor/status id to the c/d/s name.
-	// TODO move html out of class, template?
-	function showOverview()
-	{
-		$sql = e107::getDb();
-		// Query that checks the database for entries
-		$entries = $sql->retrieve('oweme_entries', 'e_id, e_datestamp, e_category, e_amount, e_description, e_debtor, e_status', '', TRUE); 
-		/* Queries to prepare for the NEXTPREV 
-			$total_entries = $sql->count('oweme_entries');
-			$epp = e107::getPlugPref('oweme', 'epp');
-		*/ 
-
-		// Check if there are entries in the database, if not, show info message.
-		if($entries)
-		{
-			$text = '
-			<table class="table table-bordered table-hover">
-	 		<thead>
-	 			<tr>
-		          	<th>'.LAN_OWEME_ID.'</th>
-		          	<th>'.LAN_OWEME_DATE.'</th>
-		          	<th>'.LAN_OWEME_CATEGORY.'</th>
-		          	<th>'.LAN_OWEME_AMOUNT.'</th>
-		          	<th>'.LAN_OWEME_DESCRIPTION.'</th>
-		          	<th>'.LAN_OWEME_DEBTOR.'</th>
-		          	<th>'.LAN_OWEME_STATUS.'</th>
-		        </tr>
-		     </thead>
-	         	<tbody>';
-	         	$currency = e107::getPlugPref('oweme', 'currency');
-	         	// Loop trough each entry
-				foreach ($entries as $entry) 
-				{
-					// Turn the array that was returned by getStatus() into variables. 
-					list($statuslabel, $statusname) = $this->getStatus($entry["e_status"]);
-
-				    $text .= '
-			        <tr>
-			        	<td>'.$entry["e_id"].'</td>
-			        	<td>'.e107::getDate()->convert_date($entry["e_datestamp"], "%d %B, %Y").'</td>
-			        	<td>'.$this->getCategoryname($entry["e_category"]).'</td>
-			        	<td>'.$entry["e_amount"]." ".$currency.'</td>
-			        	<td>'.$entry["e_description"].'</td>
-			        	<td>'.$this->getDebtorname($entry["e_debtor"]).'</td>
-			        	<td><span class="label '.$statuslabel.'">'.$statusname.'</span></td>
-			    	</tr>';
-				}
-		        
-			        $text .= '
-		        </tbody>
-		    </table>';
-		    /* NEXTPREV - WORK IN PROGRESS
-		    $parms = "total={$total_entries}&amount={$epp}&current=0";
-			$text .= "<div class='nextprev'>".e107::getParser()->parseTemplate("{NEXTPREV={$parms}}").'</div>
-			';*/
-		}
-		// No entries, display info message
-		else
-		{
-			$text = "
-			<div class='alert alert-info alert-block text-center'>".LAN_OWEME_001."</div>
-			";
-		}
-
-		// Let's render and show it!
-		e107::getRender()->tablerender("Owe Me!", $text);
-	}
 }
 
-new oweme;
+$oweme = new oweme;
+$sql = e107::getDb();
+
+// Query that checks the database for entries
+$entries = $sql->retrieve('oweme_entries', 'e_id, e_datestamp, e_category, e_amount, e_description, e_debtor, e_status', '', TRUE); 
+/* Queries to prepare for the NEXTPREV 
+	$total_entries = $sql->count('oweme_entries');
+	$epp = e107::getPlugPref('oweme', 'epp');
+*/ 
+
+if($entries)
+{
+	$text = '
+	<table class="table table-bordered table-hover">
+		<thead>
+			<tr>
+          	<th>'.LAN_OWEME_ID.'</th>
+          	<th>'.LAN_OWEME_DATE.'</th>
+          	<th>'.LAN_OWEME_CATEGORY.'</th>
+          	<th>'.LAN_OWEME_AMOUNT.'</th>
+          	<th>'.LAN_OWEME_DESCRIPTION.'</th>
+          	<th>'.LAN_OWEME_DEBTOR.'</th>
+          	<th>'.LAN_OWEME_STATUS.'</th>
+        </tr>
+     </thead>
+     	<tbody>';
+     	$currency = e107::getPlugPref('oweme', 'currency');
+     	// Loop trough each entry
+		foreach ($entries as $entry) 
+		{
+			// Turn the array that was returned by getStatus() into variables. 
+			list($statuslabel, $statusname) = $oweme->getStatus($entry["e_status"]);
+
+		    $text .= '
+	        <tr>
+	        	<td>'.$entry["e_id"].'</td>
+	        	<td>'.e107::getDate()->convert_date($entry["e_datestamp"], "%d %B, %Y").'</td>
+	        	<td>'.$oweme->getCategoryname($entry["e_category"]).'</td>
+	        	<td>'.$entry["e_amount"]." ".$currency.'</td>
+	        	<td>'.$entry["e_description"].'</td>
+	        	<td>'.$oweme->getDebtorname($entry["e_debtor"]).'</td>
+	        	<td><span class="label '.$statuslabel.'">'.$statusname.'</span></td>
+	    	</tr>';
+		}
+        
+	        $text .= '
+        </tbody>
+    </table>';
+    /* NEXTPREV - WORK IN PROGRESS
+    $parms = "total={$total_entries}&amount={$epp}&current=0";
+	$text .= "<div class='nextprev'>".e107::getParser()->parseTemplate("{NEXTPREV={$parms}}").'</div>
+	';*/
+}
+// No entries, display info message
+else
+{
+	$text = "
+	<div class='alert alert-info alert-block text-center'>".LAN_OWEME_001."</div>
+	";
+}
+
+// Let's render and show it!
+e107::getRender()->tablerender("Owe Me!", $text);
 
 require_once(FOOTERF);
 exit;
