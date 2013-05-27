@@ -29,15 +29,14 @@ if(version_compare($php_version, 5.3, "<"))
 	exit;
 }
 
-e107::plugLan('oweme', e_LANGUAGE.'_front');
+// Load the LAN files (e_PLUGIN/oweme/languages/LANGUAGE/LANGUAGE_front.php)
+e107::lan('oweme', false, true);
 
 require_once(HEADERF);
-
 
 // Ok, all neccessary files are included, all checks have been passed: we are good to go.
 class oweme
 {
-
 	function __construct()
 	{
 		$this->showOverview();
@@ -69,11 +68,16 @@ class oweme
 	}
 	
 	// Here's the main table, the above functions are there to match the category/debtor/status id to the c/d/s name.
+	// TODO move html out of class, template?
 	function showOverview()
 	{
 		$sql = e107::getDb();
 		// Query that checks the database for entries
 		$entries = $sql->retrieve('oweme_entries', 'e_id, e_datestamp, e_category, e_amount, e_description, e_debtor, e_status', '', TRUE); 
+		/* Queries to prepare for the NEXTPREV 
+			$total_entries = $sql->count('oweme_entries');
+			$epp = e107::getPlugPref('oweme', 'epp');
+		*/ 
 
 		// Check if there are entries in the database, if not, show info message.
 		if($entries)
@@ -92,6 +96,7 @@ class oweme
 		        </tr>
 		     </thead>
 	         	<tbody>';
+	         	$currency = e107::getPlugPref('oweme', 'currency');
 	         	// Loop trough each entry
 				foreach ($entries as $entry) 
 				{
@@ -101,9 +106,9 @@ class oweme
 				    $text .= '
 			        <tr>
 			        	<td>'.$entry["e_id"].'</td>
-			        	<td>'.e107::getDate()->convert_date($entry["e_datestamp"], "%d %B, %y").'</td>
+			        	<td>'.e107::getDate()->convert_date($entry["e_datestamp"], "%d %B, %Y").'</td>
 			        	<td>'.$this->getCategoryname($entry["e_category"]).'</td>
-			        	<td>&euro;'.$entry["e_amount"].'</td>
+			        	<td>'.$entry["e_amount"]." ".$currency.'</td>
 			        	<td>'.$entry["e_description"].'</td>
 			        	<td>'.$this->getDebtorname($entry["e_debtor"]).'</td>
 			        	<td><span class="label '.$statuslabel.'">'.$statusname.'</span></td>
@@ -112,8 +117,11 @@ class oweme
 		        
 			        $text .= '
 		        </tbody>
-		    </table>
-			';
+		    </table>';
+		    /* NEXTPREV - WORK IN PROGRESS
+		    $parms = "total={$total_entries}&amount={$epp}&current=0";
+			$text .= "<div class='nextprev'>".e107::getParser()->parseTemplate("{NEXTPREV={$parms}}").'</div>
+			';*/
 		}
 		// No entries, display info message
 		else
@@ -126,7 +134,6 @@ class oweme
 		// Let's render and show it!
 		e107::getRender()->tablerender("Owe Me!", $text);
 	}
-	
 }
 
 new oweme;
