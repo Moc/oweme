@@ -20,11 +20,10 @@ If you are running on anything lower than PHP 5.3,  you are nearly **FOUR YEARS 
 ## Roadmap - planned features ##
 * *Preferences/options* to set currency, email settings, etc.
 * *Templating* for frontend customization
-* *Email* functionality (initial entry, reminders).
-* Different *types* of 'items' that are owed (other than 'money').
-* *Userclasses* integration (debtors, categories).
-* Somehow *link debtors-categories-types*. 
-* Using *tabs* create/manage (debtor, category, status)
+* *Email functionality* (initial entry, reminders).
+* *Userclasses* integration (debtors).
+* Somehow *link debtors-categories*. 
+* Using *tabs* create/manage debtor, category and status instead of different pages
 
 
 ## How to get help? ##
@@ -37,7 +36,7 @@ If you are running on anything lower than PHP 5.3,  you are nearly **FOUR YEARS 
 * Use the [issue tracker](https://github.com/Moc/oweme/issues)
 
 ## Translation ##
-* In case you want to translate this plugin to this language, I want to start with thanking you for your (planned) contribution. Simply use the [pull-request feature on Github](https://help.github.com/articles/using-pull-requests) to submit your language file.
+* In case you want to translate this plugin to your language, let me first thank you for your (planned) contribution. To submit your language file, simply use the [pull-request feature on Github](https://help.github.com/articles/using-pull-requests) 
  
 
 ## Anything else? ##
@@ -47,10 +46,10 @@ If you are running on anything lower than PHP 5.3,  you are nearly **FOUR YEARS 
 * Below you can find some screenshots to get an impression of how the plugin looks like. 
 
 ![ss1](https://raw.github.com/Moc/oweme/829782ef52b21d40c4588732b35f06c1ac9783ae/screenshots/oweme_admin_manage-entries.png)
-*Main admin*
+*Main admin area*
 
 ![ss2](https://raw.github.com/Moc/oweme/829782ef52b21d40c4588732b35f06c1ac9783ae/screenshots/oweme_admin_editentry.png)
-*Adding an entry*
+*Adding/editing new entry*
 
 ![ss3](https://raw.github.com/Moc/oweme/829782ef52b21d40c4588732b35f06c1ac9783ae/screenshots/oweme_frontend.png)
 *Frontend*
