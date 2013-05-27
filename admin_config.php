@@ -160,8 +160,8 @@ class oweme_entries_ui extends e_admin_ui
 	protected $fieldpref = array('e_id', 'e_datestamp', 'e_debtor', 'e_amount', 'e_description', 'e_category', 'e_status');
 	
 	protected $prefs = array(	
-		'currency'		=> array('title'=> 'Currency', 'type'=>'dropdown', 'data' => 'string','help'=>'Default currency.'),
-		'epp'		=> array('title'=> 'Epp', 'type'=>'dropdown', 'data' => 'string','help'=>'The number of entries per page.'),
+		'currency'	=> array('title'=> 'Currency', 			'type'=>'text', 'data' => 'string','help'=>'Symbol of the currency.'),
+		'epp'		=> array('title'=> 'Entries per page', 	'type'=>'method', 'data' => 'string','help'=>'The number of entries per page that are shown in the table.'),
 	);
 
 	public function init()
@@ -213,7 +213,19 @@ class oweme_entries_ui extends e_admin_ui
 
 class oweme_entries_form_ui extends e_admin_form_ui
 {
+	// Entries per page 
+	function epp($curVal,$mode)
+	{
+		$frm = e107::getForm();		
 
+		switch($mode)
+		{
+			case 'read': // List Page
+			case 'write': // Edit Page
+				return $frm->number('epp', e107::getPlugPref('oweme','epp'), '3');
+			break;
+		}
+	}
 }		
 		
 
@@ -242,7 +254,7 @@ class oweme_statuses_ui extends e_admin_ui
 
 class oweme_statuses_form_ui extends e_admin_form_ui
 {
-	// Custom Method/Function 
+	// Status label
 	function s_label($curVal,$mode)
 	{
 		$frm = e107::getForm();		
