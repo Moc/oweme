@@ -14,15 +14,14 @@ This plugin is coded using e107 which includes **bootstrap and jquery standards*
 
 **To be clear**: e107 v1.x is not supported, nor is any PHP version prior to PHP 5.3! 
 
-If you are running on anything lower than PHP 5.3,  you are nearly **FOUR YEARS  behind on schedule!** PHP 5.3.0 was released on the 30th of June 2009, do something!
+If you are running on anything lower than PHP 5.3,  you are over **FOUR YEARS  behind on schedule!** PHP 5.3.0 was released on the 30th of June 2009, do something!
 
 
 ## Roadmap - planned features ##
-* *Preferences/options* to set currency, email settings, etc.
-* *Templating* for frontend customization
-* *Email functionality* (initial entry, reminders).
-* *Userclasses* integration (debtors).
-* Somehow *link debtors-categories*. 
+* Preferences/options (email settings)
+* ~~Templating for frontend customization~~
+* Email functionality (initial entry, reminders).
+* Userclasses integration (debtors).
 * Using *tabs* create/manage debtor, category and status instead of different pages
 
 
@@ -40,7 +39,7 @@ If you are running on anything lower than PHP 5.3,  you are nearly **FOUR YEARS 
  
 
 ## Anything else? ##
-* Seriously? Well, if there is something going on that does not match with anything mentioned above, simply [drop me a PM on e107.org](http://e107.org/e107_plugins/pm/pm.php?send.44563). I'll get back to you as soon as I can.
+* Seriously? Well, if there is something going on that does not match with anything mentioned above, simply [contact me through my website](http://www.tijnkuyper.nl). I'll get back to you as soon as I can.
 
 ## Screenshots ##
 * Below you can find some screenshots to get an impression of how the plugin looks like. 
