@@ -4,6 +4,15 @@ CREATE TABLE `oweme_categories` (
   PRIMARY KEY (`c_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
 
+CREATE TABLE `oweme_currencies` (
+  `cur_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `cur_symbol` varchar(250) NOT NULL,
+  `cur_code` varchar(100) NOT NULL,
+  `cur_description` varchar(250) NOT NULL,
+  `cur_location` varchar(50) NOT NULL,
+  PRIMARY KEY (`cur_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
 CREATE TABLE `oweme_debtors` (
   `d_id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
   `d_name` varchar(255) NOT NULL,
@@ -27,3 +36,4 @@ CREATE TABLE `oweme_statuses` (
   `s_label` varchar(200) NOT NULL,
   PRIMARY KEY (`s_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+

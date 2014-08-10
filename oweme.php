@@ -31,6 +31,7 @@ if(version_compare($php_version, 5.3, "<"))
 
 // Load the LAN files
 e107::lan('oweme', false, true);
+$oweme_pref = e107::getPlugPref('oweme');
 
 require_once(HEADERF);
 
@@ -71,7 +72,7 @@ $sql = e107::getDb();
 $entries = $sql->retrieve('oweme_entries', 'e_id, e_datestamp, e_category, e_amount, e_description, e_debtor, e_status', '', TRUE); 
 /* Queries to prepare for the NEXTPREV 
 	$total_entries = $sql->count('oweme_entries');
-	$epp = e107::getPlugPref('oweme', 'epp');
+	$epp = $oweme_pref['epp'];
 */ 
 
 if($entries)
@@ -90,7 +91,7 @@ if($entries)
         </tr>
      </thead>
      	<tbody>';
-     	$currency = e107::getPlugPref('oweme', 'currency');
+     	
      	// Loop trough each entry
 		foreach ($entries as $entry) 
 		{
@@ -102,7 +103,7 @@ if($entries)
 	        	<td>'.$entry["e_id"].'</td>
 	        	<td>'.e107::getDate()->convert_date($entry["e_datestamp"], "%d %B, %Y").'</td>
 	        	<td>'.$oweme->getCategoryname($entry["e_category"]).'</td>
-	        	<td>'.$entry["e_amount"]." ".$currency.'</td>
+	        	<td>'.$entry["e_amount"]." ".$oweme_pref["currency"].'</td>
 	        	<td>'.$entry["e_description"].'</td>
 	        	<td>'.$oweme->getDebtorname($entry["e_debtor"]).'</td>
 	        	<td><span class="label '.$statuslabel.'">'.$statusname.'</span></td>
