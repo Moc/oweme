@@ -14,7 +14,7 @@ This plugin is coded using e107 which includes **bootstrap and jquery standards*
 
 **To be clear**: e107 v1.x is not supported, nor is any PHP version prior to PHP 5.3! 
 
-If you are running on anything lower than PHP 5.3,  you are over **FOUR YEARS  behind on schedule!** PHP 5.3.0 was released on the 30th of June 2009, do something!
+If you are running on anything lower than PHP 5.3,  you are over **FIVE YEARS  behind on schedule!** PHP 5.3.0 was released on the 30th of June 2009, do something!
 
 
 ## Roadmap - planned features ##
