@@ -146,23 +146,34 @@ class oweme_entries_ui extends e_admin_ui
 	protected $fields 		= array (  
 		'checkboxes'			=>   array ( 'title' => '', 'type' => null, 'data' => null, 'width' => '5%', 'thclass' => 'center', 'forced' => '1', 'class' => 'center', 'toggle' => 'e-multiselect',  ),
 
-		'e_id' 	=>   array ( 'title' => LAN_ID, 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-	  	'e_datestamp' =>   array ( 'title' => LAN_DATESTAMP, 'type' => 'datestamp', 'data' => 'int', 'width' => 'auto', 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-	  	'e_debtor' =>   array ( 'title' => LAN_OWEME_DEBTOR, 'type' => 'dropdown', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),	  	
-	 	'e_amount' =>   array ( 'title' => LAN_OWEME_AMOUNT, 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
-	  	'e_description' =>   array ( 'title' => LAN_DESCRIPTION, 'type' => 'textarea', 'data' => 'str', 'width' => '40%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-	  	'e_category' =>   array ( 'title' => LAN_CATEGORY, 'type' => 'dropdown', 'data' => 'int', 'width' => 'auto', 'inline' => true, 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-	  	
-	  	'e_status' =>   array ( 'title' => LAN_STATUS, 'type' => 'dropdown', 'data' => 'int', 'width' => 'auto', 'inline' => true, 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
-	  	'options' =>   array ( 'title' => LAN_OPTIONS, 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
+		'e_id' 			=>   array('title' => LAN_ID, 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+	  	'e_datestamp' 	=>   array('title' => LAN_DATESTAMP, 'type' => 'datestamp', 'data' => 'int', 'width' => 'auto', 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+	  	'e_debtor' 		=>   array('title' => LAN_OWEME_DEBTOR, 'type' => 'dropdown', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),	  	
+	 	'e_amount' 		=>   array('title' => LAN_OWEME_AMOUNT, 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
+	  	'e_description' =>   array('title' => LAN_DESCRIPTION, 'type' => 'textarea', 'data' => 'str', 'width' => '40%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+	  	'e_category' 	=>   array('title' => LAN_CATEGORY, 'type' => 'dropdown', 'data' => 'int', 'width' => 'auto', 'inline' => true, 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+	  	'e_status' 		=>   array('title' => LAN_STATUS, 'type' => 'dropdown', 'data' => 'int', 'width' => 'auto', 'inline' => true, 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
+	  	'options' 		=>   array('title' => LAN_OPTIONS, 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
 	);		
 	
 	protected $fieldpref = array('e_id', 'e_datestamp', 'e_debtor', 'e_amount', 'e_description', 'e_category', 'e_status');
 	
+	// TODO LAN
 	protected $prefs = array(	
-		'currency'	=> array('title'=> 'Currency', 			'type'=>'text', 'data' => 'string','help'=>'Symbol of the currency.'),
-		'epp'		=> array('title'=> 'Entries per page', 	'type'=>'method', 'data' => 'string','help'=>'The number of entries per page that are shown in the table.'),
+		'default_currency'	=> array(
+			'title'	=> 'Default currency', 			
+			'type'	=> 'dropdown', 
+			'data' 	=> 'str',
+			'help'	=> 'Default currency that is used for all entries (unless specified otherwise)'
+		),
+		'epp'		=> array(
+			'title'	=> 'Entries per page', 	
+			'type'	=> 'number', 
+			'data'	=> 'int',
+			'help'	=> 'The number of entries per page that are shown in the table.'
+		),
 	);
+
 
 	public function init()
 	{
@@ -203,8 +214,20 @@ class oweme_entries_ui extends e_admin_ui
 				$this->status[$row['s_id']] = $row['s_name'];
 			}
 		}
-	
+
 		$this->fields['e_status']['writeParms'] = $this->status;
+
+
+		// pref: default currency
+		if($sql->select('oweme_currencies'))
+		{
+			while ($row = $sql->fetch())
+			{
+				$this->currency[$row['cur_id']] = $row['cur_description']." (".$row['cur_code'].")";
+			}
+		}
+
+		$this->prefs['default_currency']['writeParms'] = $this->currency;
 	}
 
 }
@@ -213,19 +236,19 @@ class oweme_entries_ui extends e_admin_ui
 
 class oweme_entries_form_ui extends e_admin_form_ui
 {
-	// Entries per page 
-	function epp($curVal,$mode)
-	{
-		$frm = e107::getForm();		
+	// // Entries per page 
+	// function epp($curVal,$mode)
+	// {
+	// 	$frm = e107::getForm();		
 
-		switch($mode)
-		{
-			case 'read': // List Page
-			case 'write': // Edit Page
-				return $frm->number('epp', e107::getPlugPref('oweme','epp'), '3');
-			break;
-		}
-	}
+	// 	switch($mode)
+	// 	{
+	// 		case 'read': // List Page
+	// 		case 'write': // Edit Page
+	// 			return $frm->number('epp', e107::getPlugPref('oweme','epp'), '3');
+	// 		break;
+	// 	}
+	// }
 }		
 		
 
@@ -247,7 +270,7 @@ class oweme_statuses_ui extends e_admin_ui
 			'options' =>   array ( 'title' => LAN_OPTIONS, 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
 		);		
 		
-		protected $fieldpref = array('s_id', 's_label');		
+		protected $fieldpref = array('s_id', 's_name', 's_label');		
 }
 				
 
