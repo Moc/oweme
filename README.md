@@ -23,6 +23,8 @@ If you are running on anything lower than PHP 5.3,  you are over **FIVE YEARS  b
 * Email functionality (initial entry, reminders).
 * Userclasses integration (debtors).
 * Using *tabs* create/manage debtor, category and status instead of different pages
+* Currency integration
+* Next/prev pagination
 
 
 ## How to get help? ##
