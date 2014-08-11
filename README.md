@@ -1,11 +1,9 @@
 # Owe Me!  #
-
 Owe Me! is an e107 plugin that provides an overview of that what people owe you. You can create entries and include date, category, amount, description, debtor and the status of the entry.
 
 Also, one is able to manage categories, debtors and statuses from the admin area.
 
-This plugin is coded using e107 which includes **bootstrap and jquery standards**. 
-
+This plugin is coded using e107 which includes **bootstrap and jquery standards**. It's secondary purpose is to provide an example of a properly coded plugin for e107 v2, making use of all its new features and possibilities.  
 
 ## Requirements ##
 * e107 v2.x
@@ -16,22 +14,19 @@ This plugin is coded using e107 which includes **bootstrap and jquery standards*
 
 If you are running on anything lower than PHP 5.3,  you are over **FIVE YEARS  behind on schedule!** PHP 5.3.0 was released on the 30th of June 2009, do something!
 
-
 ## Roadmap - planned features ##
-* Preferences/options (email settings)
+* Preferences/options 
 * ~~Templating for frontend customization~~
 * Email functionality (initial entry, reminders).
 * Userclasses integration (debtors).
-* Using *tabs* create/manage debtor, category and status instead of different pages
-* Currency integration
+* Admin UI enhancement: maybe using *tabs* to create/manage debtor/category/status instead of separate pages
+* ~~Currency integration~~
 * Next/prev pagination
-
+* Friendly URL configuration
 
 ## How to get help? ##
-
 * First, **search the wiki** [here](https://github.com/Moc/oweme/wiki)
 * If you cannot find the answer, you can submit an issue to the [issue tracker](https://github.com/Moc/oweme/issues).
-
 
 ## Bugs &  feature requests ##
 * Use the [issue tracker](https://github.com/Moc/oweme/issues)
@@ -39,7 +34,6 @@ If you are running on anything lower than PHP 5.3,  you are over **FIVE YEARS  b
 ## Translation ##
 * In case you want to translate this plugin to your language, let me first thank you for your (planned) contribution. To submit your language file, simply use the [pull-request feature on Github](https://help.github.com/articles/using-pull-requests) 
  
-
 ## Anything else? ##
 * Seriously? Well, if there is something going on that does not match with anything mentioned above, simply [contact me through my website](http://www.tijnkuyper.nl). I'll get back to you as soon as I can.
 
