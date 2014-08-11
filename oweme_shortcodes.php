@@ -62,12 +62,13 @@ class oweme_shortcodes extends e_shortcode
    */
    function sc_oweme_id($parm='')
    {
-       return $this->var['e_id'];
+      return $this->var['e_id'];
    } 
 
    function sc_oweme_date($parm='')
    {
-       return e107::getDate()->convert_date($this->var["e_datestamp"], "%d %B, %Y");
+      $date_format = e107::getPlugPref('oweme', 'date_format', '%d %B, %Y');
+      return e107::getDate()->convert_date($this->var["e_datestamp"], $date_format);
    } 
 
    function sc_oweme_category($parm='')
@@ -82,12 +83,12 @@ class oweme_shortcodes extends e_shortcode
 
    function sc_oweme_description($parm='')
    {
-     return $this->var["e_description"];
+      return $this->var["e_description"];
    }
 
    function sc_oweme_debtor($parm='')
    {
-     return e107::getDb()->retrieve('oweme_debtors', 'd_name', 'd_id = '.$this->var["e_debtor"].'');
+      return e107::getDb()->retrieve('oweme_debtors', 'd_name', 'd_id = '.$this->var["e_debtor"].'');
    }
 
    function sc_oweme_status_label($parm='')

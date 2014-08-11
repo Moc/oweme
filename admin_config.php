@@ -160,17 +160,23 @@ class oweme_entries_ui extends e_admin_ui
 	
 	// TODO LAN
 	protected $prefs = array(	
-		'default_currency'	=> array(
+		'default_currency' => array(
 			'title'	=> 'Default currency', 			
 			'type'	=> 'dropdown', 
 			'data' 	=> 'str',
 			'help'	=> 'Default currency that is used for all entries (unless specified otherwise)'
 		),
-		'epp'		=> array(
+		'epp' => array(
 			'title'	=> 'Entries per page', 	
 			'type'	=> 'number', 
 			'data'	=> 'int',
 			'help'	=> 'The number of entries per page that are shown in the table.'
+		),
+		'date_format' => array(
+			'title'	=> 'Date format', 	
+			'type'	=> 'text', 
+			'data'	=> 'str',
+			'help'	=> 'Defines how the date is displayed (using PHP\'s date() format)'
 		),
 	);
 
