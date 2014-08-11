@@ -58,7 +58,7 @@ class oweme_setup
 		// Statuses
 		$query_statuses = "
 		INSERT INTO `#oweme_statuses` (`s_id`, `s_name`, `s_label`) VALUES
-			(1, 'Open', 'label-warning'),
+			(1, 'Open', 'label-danger'),
 			(2, 'Closed', 'label-success');
 		";
 		

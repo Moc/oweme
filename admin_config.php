@@ -291,13 +291,14 @@ class oweme_statuses_form_ui extends e_admin_form_ui
 			
 			case 'write': // Edit Page
 				return $frm->radio('s_label', array(
-					"label-default" 	=> "<span class='label label-default'>label-default</span>", 
-					"label-success" 	=> "<span class='label label-success'>label-success</span>", 
+					"label-default" 	=> "<span class='label label-default'>label-default</span>",
+					"label-primary" 	=> "<span class='label label-primary'>label-primary</span>",  
+					"label-success" 	=> "<span class='label label-success'>label-success</span>",
+					"label-info" 		=> "<span class='label label-info'>label-info</span>", 
 					"label-warning" 	=> "<span class='label label-warning'>label-warning</span>", 
-					"label-important" 	=> "<span class='label label-important'>label-important</span>",
-					"label-info" 		=> "<span class='label label-info'>label-info</span>",
-					"label-inverse" 	=> "<span class='label label-inverse'>label-inverse</span>", ), 
-				$curVal, array('sep' => '<br />'));
+					"label-danger" 		=> "<span class='label label-danger'>label-danger</span>"
+					), 
+					$curVal, array('sep' => '<br />'));
 			break;
 			
 			case 'filter':
