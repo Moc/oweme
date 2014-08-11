@@ -299,6 +299,7 @@ class oweme_statuses_form_ui extends e_admin_form_ui
 					"label-danger" 		=> "<span class='label label-danger'>label-danger</span>"
 					), 
 					$curVal, array('sep' => '<br />'));
+					// FIXME - Does not diplay nicely in BS2 admin theme because labels changed in BS3
 			break;
 			
 			case 'filter':
