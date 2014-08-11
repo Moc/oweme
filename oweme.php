@@ -42,7 +42,7 @@ $sc  = new oweme_shortcodes();
 $tp  = e107::getParser();
 
 // Query that checks the database for entries
-$entries = $sql->retrieve('oweme_entries', 'e_id, e_datestamp, e_category, e_amount, e_description, e_debtor, e_status', '', TRUE); 
+$entries = $sql->retrieve('oweme_entries', '*', '', TRUE); 
 
 /* TODO
 	Queries to prepare for the NEXTPREV 

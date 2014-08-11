@@ -73,12 +73,22 @@ class oweme_shortcodes extends e_shortcode
 
    function sc_oweme_category($parm='')
    {
-      return e107::getDb()->retrieve('oweme_categories', 'c_name', 'c_id = '.$this->var["e_category"].'');
+      return e107::getDb()->retrieve('oweme_categories', 'c_name', 'c_id = '.$this->var["e_category"]);
    }
 
-   function sc_oweme_amount($parm='') // TODO: Currency implementation
+   function sc_oweme_amount($parm='') 
    {
-      return $this->var["e_amount"];
+      $cur_pos    = e107::getDb()->retrieve('oweme_currencies', 'cur_location', 'cur_id = '.$this->var['e_currency']); 
+      $cur_symbol = e107::getDb()->retrieve('oweme_currencies', 'cur_symbol', 'cur_id = '.$this->var['e_currency']); 
+      
+      if($cur_pos == 'front')
+      {
+         return $cur_symbol." ".$this->var["e_amount"];
+      }
+      else
+      {
+         return $this->var["e_amount"]." ".$cur_symbol;
+      }
    }
 
    function sc_oweme_description($parm='')
@@ -88,17 +98,17 @@ class oweme_shortcodes extends e_shortcode
 
    function sc_oweme_debtor($parm='')
    {
-      return e107::getDb()->retrieve('oweme_debtors', 'd_name', 'd_id = '.$this->var["e_debtor"].'');
+      return e107::getDb()->retrieve('oweme_debtors', 'd_name', 'd_id = '.$this->var["e_debtor"]);
    }
 
    function sc_oweme_status_label($parm='')
    {
-      return e107::getDb()->retrieve('oweme_statuses', 's_label', 's_id = '.$this->var["e_status"].'');
+      return e107::getDb()->retrieve('oweme_statuses', 's_label', 's_id = '.$this->var["e_status"]);
    }
 
    function sc_oweme_status_name($parm='')
    {
-      return e107::getDb()->retrieve('oweme_statuses', 's_name', 's_id = '.$this->var["e_status"].'');
+      return e107::getDb()->retrieve('oweme_statuses', 's_name', 's_id = '.$this->var["e_status"]);
    }
 
 }

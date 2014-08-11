@@ -47,9 +47,9 @@ class oweme_setup
 
 		// Entries
 		$query_entries = "
-		INSERT INTO `#oweme_entries` (`e_id`, `e_datestamp`, `e_category`, `e_amount`, `e_description`, `e_debtor`, `e_status`) VALUES
-			(1, 1365544800, 1, 5.50, 'John ran out of cash for dinner.', '1', 1),
-			(2, 1365544800, 2, 45.00, 'Jane had problems with her ATM card.', '2', 2);
+		INSERT INTO `#oweme_entries` (`e_id`, `e_datestamp`, `e_category`, `e_currency`, `e_amount`, `e_description`, `e_debtor`, `e_status`) VALUES
+			(1, 1365544800, 1, 6, 5.50, 'John ran out of cash for dinner.', '1', 1),
+			(2, 1365544800, 2, 14, 45.00, 'Jane had problems with her ATM card.', '2', 2);
 		";
 		
 		$status = ($sql->gen($query_entries)) ? E_MESSAGE_SUCCESS : E_MESSAGE_ERROR;

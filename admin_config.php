@@ -148,7 +148,8 @@ class oweme_entries_ui extends e_admin_ui
 
 		'e_id' 			=>   array('title' => LAN_ID, 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
 	  	'e_datestamp' 	=>   array('title' => LAN_DATESTAMP, 'type' => 'datestamp', 'data' => 'int', 'width' => 'auto', 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-	  	'e_debtor' 		=>   array('title' => LAN_OWEME_DEBTOR, 'type' => 'dropdown', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),	  	
+	  	'e_debtor' 		=>   array('title' => LAN_OWEME_DEBTOR, 'type' => 'dropdown', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
+	  	'e_currency'	=>   array('title' => LAN_OWEME_CURRENCY, 'type' => 'dropdown', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),	  	
 	 	'e_amount' 		=>   array('title' => LAN_OWEME_AMOUNT, 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'center', 'thclass' => 'center',  ),
 	  	'e_description' =>   array('title' => LAN_DESCRIPTION, 'type' => 'textarea', 'data' => 'str', 'width' => '40%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
 	  	'e_category' 	=>   array('title' => LAN_CATEGORY, 'type' => 'dropdown', 'data' => 'int', 'width' => 'auto', 'inline' => true, 'filter' => true, 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
@@ -185,7 +186,7 @@ class oweme_entries_ui extends e_admin_ui
 	{
 		$sql = e107::getDb();
 
-		// debtors
+		// debtor
 		$this->debtor[0] = LAN_OWEME_A_001;
 		if($sql->select('oweme_debtors'))
 		{
@@ -197,8 +198,20 @@ class oweme_entries_ui extends e_admin_ui
 		
 		$this->fields['e_debtor']['writeParms'] = $this->debtor;
 
+
+		// currency
+		$this->currency[0] = "default"; // TODO
+		if($sql->select('oweme_currencies'))
+		{
+			while ($row = $sql->fetch())
+			{
+				$this->currency[$row['cur_id']] = $row['cur_description']." (".$row['cur_code'].")";
+			}
+		}
 		
-		// categories
+		$this->fields['e_currency']['writeParms'] = $this->currency;
+		
+		// category
 		$this->category[0] = LAN_OWEME_A_002;
 		if($sql->select('oweme_categories'))
 		{
@@ -211,7 +224,7 @@ class oweme_entries_ui extends e_admin_ui
 		$this->fields['e_category']['writeParms'] = $this->category;
 
 
-		// statuses
+		// status
 		$this->status[0] = LAN_OWEME_A_003;
 		if($sql->select('oweme_statuses'))
 		{
