@@ -29,20 +29,22 @@ if(version_compare($php_version, 5.3, "<"))
 	exit;
 }
 
-// Load the LAN files and other required files
+require_once(HEADERF);
+
+// Load the LAN files
 e107::lan('oweme', false, true);
 
-require_once(HEADERF);
-require_once('templates/oweme_template.php'); // TODO: check why this is needed...
-require_once('oweme_shortcodes.php'); // TODO: check why this is needed...
-
-// Ok, all neccessary files are included, all checks have been passed: we are good to go.
 $sql = e107::getDb();
-$sc  = new oweme_shortcodes();
 $tp  = e107::getParser();
 
+// Load template and shortcodes
+$sc = e107::getScBatch('oweme', TRUE);
+$template = e107::getTemplate('oweme'); 
+$template = array_change_key_case($template);
+
+// Ok, all neccessary files are included, all checks have been passed: we are good to go.
 // Query that checks the database for entries
-$entries = $sql->retrieve('oweme_entries', '*', '', TRUE); 
+$entries = $sql->retrieve('oweme_entries', '*', '', TRUE); // we need all the values 
 
 /* TODO
 	Queries to prepare for the NEXTPREV 
@@ -54,15 +56,15 @@ $entries = $sql->retrieve('oweme_entries', '*', '', TRUE);
 // Check if there antires
 if($entries)
 {
- 	$text = $tp->parseTemplate($OWEME_TEMPLATE['start'], false, $sc);
+ 	$text = $tp->parseTemplate($template['start'], false, $sc);
 
 	foreach($entries as $entry)
 	{
 		$sc->setVars($entry); // pass query values on so they can be used in the shortcodes 
-		$text .= $tp->parseTemplate($OWEME_TEMPLATE['items'], false, $sc);
+		$text .= $tp->parseTemplate($template['items'], false, $sc);
 	}
 
-	$text .= $tp->parseTemplate($OWEME_TEMPLATE['end'], false, $sc);
+	$text .= $tp->parseTemplate($template['end'], false, $sc);
     
     /* TODO
     	NEXTPREV - WORK IN PROGRESS 
