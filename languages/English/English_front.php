@@ -8,6 +8,8 @@
  *
  */
 
+define("PAGE_NAME", "Owe Me!");
+
 define("LAN_OWEME_ID", 			"ID");
 define("LAN_OWEME_DATE", 		"Date");
 define("LAN_OWEME_CATEGORY",	"Category");

@@ -29,10 +29,10 @@ if(version_compare($php_version, 5.3, "<"))
 	exit;
 }
 
-require_once(HEADERF);
-
 // Load the LAN files
-e107::lan('oweme', false, true);
+e107::lan('oweme', false, true); 
+
+require_once(HEADERF);
 
 $sql = e107::getDb();
 $tp  = e107::getParser();
