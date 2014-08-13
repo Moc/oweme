@@ -46,14 +46,14 @@ $template = array_change_key_case($template);
 // Query that checks the database for entries
 $entries = $sql->retrieve('oweme_entries', '*', '', TRUE); // we need all the values 
 
-/* TODO
-	Queries to prepare for the NEXTPREV 
+/* TODO 
+	//Queries to prepare for the NEXTPREV 
 	$oweme_pref = e107::getPlugPref('oweme');
 	$total_entries = $sql->count('oweme_entries');
 	$epp = $oweme_pref['epp'];
 */
 
-// Check if there antires
+// Check if there entries
 if($entries)
 {
  	$text = $tp->parseTemplate($template['start'], false, $sc);
