@@ -2,7 +2,7 @@
 /*
  * Owe Me! - an e107 plugin by Tijn Kuyper
  *
- * Copyright (C) 2014-2015 Tijn Kuyper (http://www.tijnkuyper.nl)
+ * Copyright (C) 2015-2016 Tijn Kuyper (http://www.tijnkuyper.nl)
  * Released under the terms and conditions of the
  * GNU General Public License (http://www.gnu.org/licenses/gpl.txt)
  *
@@ -14,7 +14,6 @@ if (!getperms('P'))
 	header('location:'.e_BASE.'index.php');
 	exit;
 }
-
 
 class oweme_admin extends e_admin_dispatcher
 {
@@ -76,9 +75,6 @@ class oweme_admin extends e_admin_dispatcher
 }
 
 	//'main/prefs' 		=> array('caption'=> LAN_PREFS, 'perm' => 'P'),	
-
-
-
 				
 class oweme_categories_ui extends e_admin_ui
 {			
@@ -96,17 +92,12 @@ class oweme_categories_ui extends e_admin_ui
 	);		
 	
 	protected $fieldpref = array('c_id', 'c_name');		
- 
-}
-				
-
+}			
 
 class oweme_categories_form_ui extends e_admin_form_ui
 {
 
 }		
-		
-
 				
 class oweme_debtors_ui extends e_admin_ui
 {
@@ -125,15 +116,11 @@ class oweme_debtors_ui extends e_admin_ui
 	
 	protected $fieldpref = array('d_id', 'd_name');	
 }
-				
-
 
 class oweme_debtors_form_ui extends e_admin_form_ui
 {
 
 }		
-		
-
 				
 class oweme_entries_ui extends e_admin_ui
 {	
@@ -200,7 +187,7 @@ class oweme_entries_ui extends e_admin_ui
 
 
 		// currency
-		$this->currency[0] = "default"; // TODO
+		$this->currency[0] = "default"; // TODO FIXME
 		if($sql->select('oweme_currencies'))
 		{
 			while ($row = $sql->fetch())
@@ -237,22 +224,20 @@ class oweme_entries_ui extends e_admin_ui
 		$this->fields['e_status']['writeParms'] = $this->status;
 
 
-		// pref: default currency
-		if($sql->select('oweme_currencies'))
-		{
-			while ($row = $sql->fetch())
-			{
-				$this->currency[$row['cur_id']] = $row['cur_description']." (".$row['cur_code'].")";
-			}
-		}
+		// // pref: default currency
+		// if($sql->select('oweme_currencies'))
+		// {
+		// 	while ($row = $sql->fetch())
+		// 	{
+		// 		$this->currency[$row['cur_id']] = $row['cur_description']." (".$row['cur_code'].")";
+		// 	}
+		// }
 
-		$this->prefs['default_currency']['writeParms'] = $this->currency;
+		// $this->prefs['default_currency']['writeParms'] = $this->currency;
 	}
 
 }
 				
-
-
 class oweme_entries_form_ui extends e_admin_form_ui
 {
 	// // Entries per page 
@@ -270,30 +255,26 @@ class oweme_entries_form_ui extends e_admin_form_ui
 	// }
 }		
 		
-
-				
 class oweme_statuses_ui extends e_admin_ui
 {
 			
-		protected $pluginTitle		= 'Owe Me!';
-		protected $pluginName		= 'Owe Me!';
-		protected $table			= 'oweme_statuses';
-		protected $pid				= 's_id';
-		protected $perPage 			= 10; 
-			
-		protected $fields 		= array (  
-			'checkboxes' =>   array ( 'title' => '', 'type' => null, 'data' => null, 'width' => '5%', 'thclass' => 'center', 'forced' => '1', 'class' => 'center', 'toggle' => 'e-multiselect',  ),
-			's_id' =>   array ( 'title' => LAN_ID, 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-			's_name' =>   array ( 'title' => LAN_NAME, 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => 'Name of the status', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-			's_label' =>   array ( 'title' => LAN_OWEME_LABEL, 'type' => 'method', 'data' => 'str', 'width' => 'auto', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-			'options' =>   array ( 'title' => LAN_OPTIONS, 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
-		);		
+	protected $pluginTitle		= 'Owe Me!';
+	protected $pluginName		= 'Owe Me!';
+	protected $table			= 'oweme_statuses';
+	protected $pid				= 's_id';
+	protected $perPage 			= 10; 
 		
-		protected $fieldpref = array('s_id', 's_name', 's_label');		
+	protected $fields 		= array (  
+		'checkboxes' =>   array ( 'title' => '', 'type' => null, 'data' => null, 'width' => '5%', 'thclass' => 'center', 'forced' => '1', 'class' => 'center', 'toggle' => 'e-multiselect',  ),
+		's_id' =>   array ( 'title' => LAN_ID, 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+		's_name' =>   array ( 'title' => LAN_NAME, 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => 'Name of the status', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+		's_label' =>   array ( 'title' => LAN_OWEME_LABEL, 'type' => 'method', 'data' => 'str', 'width' => 'auto', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
+		'options' =>   array ( 'title' => LAN_OPTIONS, 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
+	);		
+	
+	protected $fieldpref = array('s_id', 's_name', 's_label');		
 }
 				
-
-
 class oweme_statuses_form_ui extends e_admin_form_ui
 {
 	// Status label
@@ -318,18 +299,14 @@ class oweme_statuses_form_ui extends e_admin_form_ui
 					"label-danger" 		=> "<span class='label label-danger'>label-danger</span>"
 					), 
 					$curVal, array('sep' => '<br />'));
-					// FIXME - Does not diplay nicely in BS2 admin theme because labels changed in BS3
-			break;
-			
+			break;			
 			case 'filter':
 			case 'batch':
 				return  $array; 
 			break;
 		}
 	}
-
 }	
-		
 		
 new oweme_admin();
 
@@ -338,5 +315,3 @@ e107::getAdminUI()->runPage();
 
 require_once(e_ADMIN."footer.php");
 exit;
-
-?>

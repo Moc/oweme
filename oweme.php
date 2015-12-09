@@ -2,7 +2,7 @@
 /*
  * Owe Me! - an e107 plugin by Tijn Kuyper
  *
- * Copyright (C) 2014-2015 Tijn Kuyper (http://www.tijnkuyper.nl)
+ * Copyright (C) 2015-2016 Tijn Kuyper (http://www.tijnkuyper.nl)
  * Released under the terms and conditions of the
  * GNU General Public License (http://www.gnu.org/licenses/gpl.txt)
  *
@@ -14,18 +14,6 @@ require_once("../../class2.php");
 if (!e107::isInstalled('oweme'))
 {
 	header('location:'.e_BASE.'index.php');
-	exit;
-}
-
-// Exit when running PHP < 5.3 to motivate people to move to 5.3+. 
-// Oh right, and to be sure that I can use the latest PHP functions! :)
-$php_version = phpversion();
-if(version_compare($php_version, 5.3, "<"))
-{
-	require_once(HEADERF);
-	$text = 'A minimum version of PHP 5.3 is required';
-	e107::getRender()->tablerender("Owe Me! - Error", $text); 
-	require_once(FOOTERF);
 	exit;
 }
 
@@ -48,7 +36,7 @@ $entries = $sql->retrieve('oweme_entries', '*', '', TRUE); // we need all the va
 
 /* TODO 
 	//Queries to prepare for the NEXTPREV 
-	$oweme_pref = e107::getPlugPref('oweme');
+	$oweme_pref = e107::getPref('oweme');
 	$total_entries = $sql->count('oweme_entries');
 	$epp = $oweme_pref['epp'];
 */
@@ -84,4 +72,3 @@ e107::getRender()->tablerender("Owe Me!", $text);
 
 require_once(FOOTERF);
 exit;
-?>

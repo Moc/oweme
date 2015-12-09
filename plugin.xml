@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<e107Plugin name="Owe Me!" lan="LAN_OWEME_NAME" version="1.0" date="2013-04-14" compatibility="2.0" installRequired="true" >
+<e107Plugin name="Owe Me!" lan="LAN_OWEME_NAME" version="1.0" date="2015-11-18" compatibility="2.0" installRequired="true" >
 	<author name="Tijn Kuyper" url="http://www.tijnkuyper.nl" />
 	<summary lan="LAN_OWEME_SUMM">Provides an overview of that what people owe you. Ability to manage categories, debtors and statuses.</summary>
 	<description lan="LAN_OWEME_DESC">Provides an overview of that what people owe you. You can create entries and include date, category, amount, description, debtor and the status of the entry. Also, one is able to manage categories, debtors and statuses from the admin area.</description>
@@ -19,5 +19,5 @@
 		<pref name='date_format'>%d %B, %Y</pref>
 		<pref name='epp'>15</pref>
 	</pluginPrefs>
-	<copyright>Copyright 2013-2014 Tijn Kuyper. Licensed under GPL (http://www.gnu.org/licenses/gpl.txt)</copyright>
+	<copyright>Copyright 2015-2016 Tijn Kuyper. Licensed under GPL (http://www.gnu.org/licenses/gpl.txt)</copyright>
 </e107Plugin>
