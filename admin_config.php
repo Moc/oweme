@@ -364,8 +364,9 @@ class oweme_entries_ui extends e_admin_ui
 		$this->fields['e_debtor']['writeParms'] = $this->debtor;
 
 
-		// currency
-		$this->currency[0] = "default"; // TODO FIXME
+		// currency (entry)
+		$default_currency = $sql->retrieve('oweme_currencies', 'cur_description, cur_code', 'cur_id = '.e107::pref('oweme', 'default_currency'));
+		$this->currency[0] =  $default_currency['cur_description']." (".$default_currency['cur_code'].")";
 		if($sql->select('oweme_currencies'))
 		{
 			while ($row = $sql->fetch())
@@ -375,6 +376,8 @@ class oweme_entries_ui extends e_admin_ui
 		}
 
 		$this->fields['e_currency']['writeParms'] = $this->currency;
+		// pref: default currency
+		$this->prefs['default_currency']['writeParms'] = $this->currency;
 
 		// category
 		$this->category[0] = LAN_OWEME_A_002;
@@ -400,18 +403,6 @@ class oweme_entries_ui extends e_admin_ui
 		}
 
 		$this->fields['e_status']['writeParms'] = $this->status;
-
-
-		// // pref: default currency
-		// if($sql->select('oweme_currencies'))
-		// {
-		// 	while ($row = $sql->fetch())
-		// 	{
-		// 		$this->currency[$row['cur_id']] = $row['cur_description']." (".$row['cur_code'].")";
-		// 	}
-		// }
-
-		// $this->prefs['default_currency']['writeParms'] = $this->currency;
 	}
 
 }
@@ -442,12 +433,60 @@ class oweme_statuses_ui extends e_admin_ui
 	protected $pid				= 's_id';
 	protected $perPage 			= 10;
 
-	protected $fields 		= array (
-		'checkboxes' =>   array ( 'title' => '', 'type' => null, 'data' => null, 'width' => '5%', 'thclass' => 'center', 'forced' => '1', 'class' => 'center', 'toggle' => 'e-multiselect',  ),
-		's_id' =>   array ( 'title' => LAN_ID, 'data' => 'int', 'width' => '5%', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-		's_name' =>   array ( 'title' => LAN_NAME, 'type' => 'text', 'data' => 'str', 'width' => 'auto', 'inline' => true, 'validate' => true, 'help' => 'Name of the status', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-		's_label' =>   array ( 'title' => LAN_OWEME_LABEL, 'type' => 'method', 'data' => 'str', 'width' => 'auto', 'help' => '', 'readParms' => '', 'writeParms' => '', 'class' => 'left', 'thclass' => 'left',  ),
-		'options' =>   array ( 'title' => LAN_OPTIONS, 'type' => null, 'data' => null, 'width' => '10%', 'thclass' => 'center last', 'class' => 'center last', 'forced' => '1',  ),
+	protected $fields = array(
+		'checkboxes' => array(
+			'title' => '',
+			'type' => null,
+			'data' => null,
+			'width' => '5%',
+			'thclass' => 'center',
+			'forced' => '1',
+			'class' => 'center',
+			'toggle' => 'e-multiselect',
+		),
+		's_id' => array(
+			'title' => LAN_ID,
+			'data' => 'int',
+			'width' => '5%',
+			'help' => '',
+			'readParms' => '',
+			'writeParms' => '',
+			'class' => 'left',
+			'thclass' => 'left',
+		),
+		's_name' => array(
+			'title' => LAN_NAME,
+			'type' => 'text',
+			'data' => 'str',
+			'width' => 'auto',
+			'inline' => true,
+			'validate' => true,
+			'help' => 'Name of the status',
+			'readParms' => '',
+			'writeParms' => '',
+			'class' => 'left',
+			'thclass' => 'left',
+		),
+		's_label' => array(
+			'title' => LAN_OWEME_LABEL,
+			'type' => 'method',
+			'data' => 'str',
+			'width' => 'auto',
+			'help' => '',
+			'readParms' => '',
+			'writeParms' => '',
+			'class' => 'left',
+			'thclass' => 'left',
+		),
+		'options' => array(
+			'title' => LAN_OPTIONS,
+			'type' => null,
+			'data' => null,
+			'width' => '10%',
+			'thclass' => 'center last',
+			'class' => 'center last',
+			'forced' => '1',
+		),
 	);
 
 	protected $fieldpref = array('s_id', 's_name', 's_label');
