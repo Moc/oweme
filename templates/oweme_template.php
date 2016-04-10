@@ -15,13 +15,13 @@ $OWEME_TEMPLATE['start'] = '
 <table class="table table-bordered table-hover">
 	<thead>
 		<tr>
-		  	<th>{OWEME_H_ID}</th>
-		  	<th>{OWEME_H_DATE}</th>
-		  	<th>{OWEME_H_CATEGORY}</th>
-		  	<th>{OWEME_H_AMOUNT}</th>
-		  	<th>{OWEME_H_DESCRIPTION}</th>
-		  	<th>{OWEME_H_DEBTOR}</th>
-		  	<th>{OWEME_H_STATUS}</th>
+		  	<th>{LAN=LAN_ID}</th>
+		  	<th>{LAN=LAN_DATESTAMP}</th>
+		  	<th>{LAN=LAN_CATEGORY}</th>
+		  	<th>{LAN=LAN_OWEME_AMOUNT}</th>
+		  	<th>{LAN=LAN_DESCRIPTION}</th>
+		  	<th>{LAN=LAN_OWEME_DEBTOR}</th>
+		  	<th>{LAN=LAN_STATUS}</th>
 		</tr>
 	</thead>
     <tbody>
