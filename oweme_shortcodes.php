@@ -16,47 +16,6 @@ if (!defined('e107_INIT')) { exit; }
 
 class oweme_shortcodes extends e_shortcode
 {
-	/* 
-      Headings: ID, Date, Category, Amount, Description, Debtor, Status
-   */
-   function sc_oweme_h_id()
-   {
-      return LAN_OWEME_ID; 
-   } 
-   
-   function sc_oweme_h_date()
-   {
-      return LAN_OWEME_DATE;
-   }  
-
-   function sc_oweme_h_category()
-   {
-      return LAN_OWEME_CATEGORY;
-   }  
-   
-   function sc_oweme_h_amount()
-   {
-      return LAN_OWEME_AMOUNT;
-   }  
-   
-   function sc_oweme_h_description()
-   {
-      return LAN_OWEME_DESCRIPTION;
-   }  
-   
-   function sc_oweme_h_debtor()
-   {
-      return LAN_OWEME_DEBTOR;
-   }
-
-   function sc_oweme_h_status()
-   {
-      return LAN_OWEME_STATUS;
-   }  
-  
-   /*
-      Items
-   */
    function sc_oweme_id($parm='')
    {
       return $this->var['e_id'];
