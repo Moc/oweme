@@ -10,12 +10,7 @@
 
 define("PAGE_NAME", "Owe Me!");
 
-define("LAN_OWEME_ID", 			"ID");
-define("LAN_OWEME_DATE", 		"Date");
-define("LAN_OWEME_CATEGORY",	"Category");
 define("LAN_OWEME_AMOUNT", 		"Amount");
-define("LAN_OWEME_DESCRIPTION", "Description");
 define("LAN_OWEME_DEBTOR", 		"Debtor");
-define("LAN_OWEME_STATUS", 		"Status");
 
 define("LAN_OWEME_001", "No entries yet.");
