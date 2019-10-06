@@ -15,6 +15,8 @@ if (!getperms('P'))
 	exit;
 }
 
+e107::lan('oweme', true, true);
+
 class oweme_admin extends e_admin_dispatcher
 {
 	protected $modes = array(
