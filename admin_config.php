@@ -75,7 +75,7 @@ class oweme_admin extends e_admin_dispatcher
 class oweme_categories_ui extends e_admin_ui
 {
 	protected $pluginTitle		= 'Owe Me!';
-	protected $pluginName		= 'Owe Me!';
+	protected $pluginName		= 'oweme';
 	protected $table			= 'oweme_categories';
 	protected $pid				= 'c_id';
 	protected $perPage 			= 10;
@@ -93,6 +93,7 @@ class oweme_categories_ui extends e_admin_ui
 		),
 	  	'c_id' => array(
 			'title' => LAN_ID,
+			'type'  => 'number',
 			'data' 	=> 'int',
 			'width' => '5%',
 			'help' 	=> '',
@@ -136,7 +137,7 @@ class oweme_categories_form_ui extends e_admin_form_ui
 class oweme_debtors_ui extends e_admin_ui
 {
 	protected $pluginTitle		= 'Owe Me!';
-	protected $pluginName		= 'Owe Me!';
+	protected $pluginName		= 'oweme';
 	protected $table			= 'oweme_debtors';
 	protected $pid				= 'd_id';
 	protected $perPage 			= 10;
@@ -154,6 +155,7 @@ class oweme_debtors_ui extends e_admin_ui
 		),
 	  	'd_id' => array(
 			'title' => LAN_ID,
+			'type'  => 'number',
 			'data' => 'int',
 			'width' => '5%',
 			'help' => '',
@@ -197,7 +199,7 @@ class oweme_debtors_form_ui extends e_admin_form_ui
 class oweme_entries_ui extends e_admin_ui
 {
 	protected $pluginTitle		= 'Owe Me!';
-	protected $pluginName		= 'Owe Me!';
+	protected $pluginName		= 'oweme';
 	protected $table			= 'oweme_entries';
 	protected $pid				= 'e_id';
 	protected $perPage 			= 10;
@@ -215,6 +217,7 @@ class oweme_entries_ui extends e_admin_ui
 		),
 		'e_id' => array(
 			'title' => LAN_ID,
+			'type' => 'number',
 			'data' => 'int',
 			'width' => '5%',
 			'help' => '',
@@ -428,7 +431,7 @@ class oweme_statuses_ui extends e_admin_ui
 {
 
 	protected $pluginTitle		= 'Owe Me!';
-	protected $pluginName		= 'Owe Me!';
+	protected $pluginName		= 'oweme';
 	protected $table			= 'oweme_statuses';
 	protected $pid				= 's_id';
 	protected $perPage 			= 10;
@@ -446,6 +449,7 @@ class oweme_statuses_ui extends e_admin_ui
 		),
 		's_id' => array(
 			'title' => LAN_ID,
+			'type' => 'number',
 			'data' => 'int',
 			'width' => '5%',
 			'help' => '',
